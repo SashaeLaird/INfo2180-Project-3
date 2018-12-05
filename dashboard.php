@@ -1,17 +1,11 @@
 <?php
 session_start();
-if(!$_SESSION(["userID"]))
+if(!$_SESSION["userID"]))
 {
     header("Location:login.html")
 }
 ?>
 
-<!-- Done by:
-    Moesha Amos
-    Glenroy Logan
-    Sashae Laird
-    Kimanie Prendergast-->
-    
 <-- <!DOCTYPE html>-->
 <html lang="en">
     

@@ -12,20 +12,20 @@ function userLogin($emailAddress, $password)
 
 function RegisteredInDB( $emailAddress, $password)
 {
-	$connect = new PDO ('mysql:host=localhost;dbname=hireme;', 'root', 'password')
-	$checkLoginQuery = "SELECT `ID`, `firstname`, `lastname` FROM `Users` WHERE `username`='$emailAddress'";
+	$connect = new PDO ('mysql:host=localhost;dbname=HireMe;', 'root', 'password')
+	$checkLoginQuery = "SELECT `ID`, `firstname`, `lastname` FROM `Users` WHERE `email`='$emailAddress'";
 	$check = $connect ->query ($checkLoginQuery);
 	$result = $stmt->fetch(PDO::FETCH_ASSOC);
 	if ($result)
     {
 
-        $_SESSION["user_id"] = $result['ID'];
+        $_SESSION["userID"] = $result['ID'];
 
         $_SESSION["firstname"] = $result['firstname'];
 
         $_SESSION["lastname"] = $result['lastname'];
 
-        header("Location: ../dashboard.php");
+        header("Location: ../dashboard.html");
 
     }
 
@@ -38,16 +38,16 @@ function RegisteredInDB( $emailAddress, $password)
     }
 }
 
-if(isset ($_SESSION["user_id"]))
+if(isset ($_SESSION["userID"]))
 {
-	header("Location: ../database.php");
+	header("Location: ../database.html");
 
 }
 
 if ( isset( $_POST['submit_form'] ) )
 
 {
-    $username = $_POST['username'];
+    $username = $_POST['emailAddress'];
     $password = $_POST['password'];
     userLogin($username,$password);
 
